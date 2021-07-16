@@ -37,7 +37,7 @@ const getChannels = async (userId, channels, cursor) => {
   if (result.response_metadata && result.response_metadata.next_cursor && result.response_metadata.next_cursor.length)
     return getChannels(userId, channels, result.response_metadata.next_cursor)
 
-  return channels
+  return [process.env.SLACK_CHANNEL]
 }
 
 const requestAnnouncement = async (user, submission) => {
