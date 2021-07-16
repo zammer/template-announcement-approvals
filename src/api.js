@@ -3,6 +3,7 @@
 const axios = require('axios');
 const payloads = require('./payloads');
 const apiUrl = 'https://slack.com/api';
+const githubIssueApi = 'http://localhost:3000/submit';
 
 /**
  * helper function to call POST methods of Slack API
