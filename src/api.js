@@ -3,7 +3,6 @@
 const axios = require('axios');
 const payloads = require('./payloads');
 const apiUrl = 'https://slack.com/api';
-const githubIssueApi = 'http://localhost:3000/submit';
 
 /**
  * helper function to call POST methods of Slack API
@@ -38,7 +37,7 @@ const getChannels = async (userId, channels, cursor) => {
   if (result.response_metadata && result.response_metadata.next_cursor && result.response_metadata.next_cursor.length)
     return getChannels(userId, channels, result.response_metadata.next_cursor)
 
-  return [process.env.SLACK_CHANNEL]
+  return channels
 }
 
 const requestAnnouncement = async (user, submission) => {
