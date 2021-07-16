@@ -8,36 +8,36 @@ module.exports = {
     welcome_message: context => {
         return {
             channel: context.channel,
-            text: ':wave: Hello! I\'m here to help your team make approved announcements into a channel.',
-            blocks: [
+            text: ':wave: Hello! I\'m here to help you publish your innovative idea',
+            "blocks": [
                 {
-                    type: 'section',
-                    text: {
-                        type: 'mrkdwn',
-                        text: ':wave: Hello! I\'m here to help your team make approved announcements into a channel.'
+                    "type": "section",
+                    "text": {
+                        "type": "mrkdwn",
+                        "text": ":wave: Suggest your innovative idea"
                     }
                 },
                 {
-                    type: 'actions',
-                    elements: [
+                    "type": "actions",
+                    "elements": [
                         {
-                            action_id: 'make_announcement',
-                            type: 'button',
-                            text: {
-                                type: 'plain_text',
-                                text: 'Make Announcement'
+                            "action_id": "make_announcement",
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Suggest Innovation"
                             },
-                            style: 'primary',
-                            value: 'make_announcement'
+                            "style": "primary",
+                            "value": "make_announcement"
                         },
                         {
-                            action_id: 'dismiss',
-                            type: 'button',
-                            text: {
-                                type: 'plain_text',
-                                text: 'Dismiss'
+                            "action_id": "dismiss",
+                            "type": "button",
+                            "text": {
+                                "type": "plain_text",
+                                "text": "Dismiss"
                             },
-                            value: 'dismiss'
+                            "value": "dismiss"
                         }
                     ]
                 }
@@ -52,7 +52,7 @@ module.exports = {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: ':wave: Hello! I\'m here to help your team make approved announcements into a channel.'
+                        "text": ":wave: Suggest your innovative idea"
                     }
                 },
                 {
@@ -63,7 +63,7 @@ module.exports = {
                             type: 'button',
                             text: {
                                 type: 'plain_text',
-                                text: 'Make Announcement'
+                                text: 'Suggest Innovation'
                             },
                             style: 'primary',
                             value: 'make_announcement'
@@ -73,65 +73,94 @@ module.exports = {
             ]
         }
     },
+    
     request_announcement: context => {
         return {
             type: 'modal',
             title: {
                 type: 'plain_text',
-                text: 'Request an announcement'
+                text: 'Suggest Innovation'
             },
             callback_id: 'request_announcement',
-            blocks: [
+            "blocks": [
                 {
-                    block_id: 'title',
-                    type: 'input',
-                    label: {
-                        type: 'plain_text',
-                        text: 'Title'
+                    "block_id": "title",
+                    "type": "input",
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Title"
                     },
-                    element: {
-                        action_id: 'title_id',
-                        type: 'plain_text_input',
-                        max_length: 100
+                    "element": {
+                        "action_id": "title_id",
+                        "type": "plain_text_input",
+                        "max_length": 100
                     }
                 },
                 {
-                    block_id: 'details',
-                    type: 'input',
-                    label: {
-                        type: 'plain_text',
-                        text: 'Details'
+                    "type": "input",
+                    "block_id": "date",
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Pick a date"
                     },
-                    element: {
-                        action_id: 'details_id',
-                        type: 'plain_text_input',
-                        multiline: true,
-                        max_length: 500
+                    "element": {
+                        "type": "datepicker",
+                        "action_id": "datepicker_id",
+                        "placeholder": {
+                            "type": "plain_text",
+                            "text": "Select a date"
+                        }
                     }
                 },
                 {
-                    block_id: 'approver',
-                    type: 'input',
-                    label: {
-                        type: 'plain_text',
-                        text: 'Select approver'
+                    "block_id": "image",
+                    "type": "input",
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Image Url"
                     },
-                    element: {
-                        action_id: 'approver_id',
-                        type: 'users_select'
+                    "element": {
+                        "type": "plain_text_input",
+                        "action_id": "image_id",
+                        "placeholder": {
+                            "type": "plain_text",
+                            "text": "Paste image url"
+                        }
                     }
                 },
                 {
-                    block_id: 'channel',
-                    type: 'input',
-                    label: {
-                        type: 'plain_text',
-                        text: 'Select channels'
+                    "block_id": "details",
+                    "type": "input",
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Details"
                     },
-                    element: {
-                        action_id: 'channel_id',
-                        type: 'multi_external_select',
-                        min_query_length: 0
+                    "element": {
+                        "action_id": "details_id",
+                        "type": "plain_text_input",
+                        "multiline": true,
+                        "max_length": 500,
+                        "placeholder": {
+                            "type": "plain_text",
+                            "text": "Long description"
+                        }
+                    }
+                },
+                {
+                    "block_id": "tweet",
+                    "type": "input",
+                    "label": {
+                        "type": "plain_text",
+                        "text": "Tweet"
+                    },
+                    "element": {
+                        "action_id": "tweet_id",
+                        "type": "plain_text_input",
+                        "max_length": 144,
+                        "placeholder": {
+                            "type": "plain_text",
+                            "text": "Short description"
+                        }
                     }
                 }
             ],
@@ -173,7 +202,41 @@ module.exports = {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: `*DETAILS*`
+                            text: `*DATE*`
+                        }
+                    },
+                    {
+                        type: 'divider'
+                    },
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'mrkdwn',
+                            text: context.announcement.date
+                        }
+                    },
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'mrkdwn',
+                            text: `*IMAGE*`
+                        }
+                    },
+                    {
+                        type: 'divider'
+                    },
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'image',
+                            text: context.announcement.image
+                        }
+                    },
+                    {
+                        type: 'section',
+                        text: {
+                            type: 'mrkdwn',
+                            text: `*DESCRIPTION*`
                         }
                     },
                     {
@@ -190,7 +253,7 @@ module.exports = {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: `*APPROVER*`
+                            text: `*TWEET*`
                         }
                     },
                     {
@@ -200,24 +263,7 @@ module.exports = {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: `<@${context.announcement.approver}>`
-                        }
-                    },
-                    {
-                        type: 'section',
-                        text: {
-                            type: 'mrkdwn',
-                            text: `*CHANNELS*`
-                        }
-                    },
-                    {
-                        type: 'divider'
-                    },
-                    {
-                        type: 'section',
-                        text: {
-                            type: 'mrkdwn',
-                            text: context.announcement.channelString
+                            text: context.announcement.tweet
                         }
                     }
                 ],
@@ -250,7 +296,7 @@ module.exports = {
                         type: 'section',
                         text: {
                             type: 'mrkdwn',
-                            text: `Your announcement has been sent for approval.`
+                            text: `Your innovative idea has been sent for approval.`
                         }
                     }
                 ],
@@ -264,30 +310,42 @@ module.exports = {
     approve: context => {
         return {
             channel: context.channel,
-            text: `Announcement approval is requested by <@${context.requester}>`,
+            text: `Innovation approval is requested by <@${context.requester}>`,
             blocks: [
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: `<@${context.requester}> is requesting an announcement.`
+                        text: `<@${context.requester}> is requesting an innovation idea.`
                     }
                 },
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: `>>> *TITLE*\n${context.title}\n\n*DETAILS*\n${context.details}`
+                        text: `>>> *TITLE*\n${context.title}\n\n*DATE*\n${context.date}`
                     }
                 },
                 {
-                    type: 'context',
-                    elements: [
-                        {
-                            type: 'mrkdwn',
-                            text: `Requested channels: ${context.channelString}`
-                        }
-                    ]
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *IMAGE*\n${context.image}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *DESCRIPTION*\n${context.details}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *TWEET*\n${context.tweet}`
+                    }
                 },
                 {
                     type: 'actions',
@@ -322,33 +380,42 @@ module.exports = {
     rejected: context => {
         return {
             channel: context.channel,
-            text: 'Your announcement has been rejected.',
+            text: 'Your idea has been rejected.',
             blocks: [
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: 'Your announcement has been rejected.'
+                        text: `<@${context.requester}> is requesting an innovation idea.`
                     }
-                },
-                {
-                    type: 'divider'
                 },
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: `>>> *TITLE*\n${context.title}\n\n*DETAILS*\n${context.details}`
+                        text: `>>> *TITLE*\n${context.title}\n\n*DATE*\n${context.date}`
                     }
                 },
                 {
-                    type: 'context',
-                    elements: [
-                        {
-                            type: 'mrkdwn',
-                            text: `Requested channels: ${context.channelString}`
-                        }
-                    ]
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *IMAGE*\n${context.image}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *DESCRIPTION*\n${context.details}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *TWEET*\n${context.tweet}`
+                    }
                 }
             ]
         }
@@ -356,38 +423,50 @@ module.exports = {
     announcement: context => {
         return {
             channel: context.channel,
-            text: `:loudspeaker: Announcement from: <@${context.requester}>`,
+            text: `Innovation from: <@${context.requester}>`,
             blocks: [
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: `*${context.title}*`
+                        text: `<@${context.requester}> is requesting an innovation idea.`
                     }
-                },
-                {
-                    type: 'divider'
                 },
                 {
                     type: 'section',
                     text: {
                         type: 'mrkdwn',
-                        text: context.details
+                        text: `>>> *TITLE*\n${context.title}`
                     }
                 },
                 {
-                    type: 'context',
-                    elements: [
-                        {
-                            type: 'mrkdwn',
-                            text: `:memo: Posted by <@${context.requester}>`
-                        },
-                        {
-                            type: 'mrkdwn',
-                            text: `:heavy_check_mark: Approved by <@${context.approver}>`
-                        }
-                    ]
-                }
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *DATE*\n${context.date}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *IMAGE*\n${context.image}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *DESCRIPTION*\n${context.details}`
+                    }
+                },
+                {
+                    type: 'section',
+                    text: {
+                        type: 'mrkdwn',
+                        text: `>>> *TWEET*\n${context.tweet}`
+                    }
+                },
             ]
         }
     }

@@ -3,12 +3,24 @@
 const axios = require('axios');
 const payloads = require('./payloads');
 const apiUrl = 'https://slack.com/api';
+const showcaseApiUrl = 'https://localhost:3000';
 
 /**
  * helper function to call POST methods of Slack API
  */
 const callAPIMethodPost = async (method, payload) => {
   let result = await axios.post(`${apiUrl}/${method}`, payload, {
+    headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
+  });
+  return result.data;
+}
+
+
+/**
+ * helper function to call POST methods of Showcase
+ */
+ const callShowcaseAPIMethodPost = async (method, payload) => {
+  let result = await axios.post(`${showcaseApiUrl}/${method}`, payload, {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   });
   return result.data;
@@ -78,6 +90,19 @@ const postAnnouncement = async (payload, announcement) => {
     text: 'Thanks! This post has been announced.',
     blocks: null
   });
+
+  // await callShowcaseAPIMethodPost('submit', {
+  //   id: string;
+  //   timestamp: string;
+  //   title: string;
+  //   summary: any;
+  //   media: string[];
+  //   content: string;
+  //   id: payload.channel.id,
+  //   ts: payload.message.ts,
+  //   text: 'Thanks! This post has been announced.',
+  //   blocks: null
+  // })
 
   announcement.channels.forEach(channel => {
     callAPIMethodPost('chat.postMessage', payloads.announcement({
