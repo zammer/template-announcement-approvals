@@ -73,6 +73,7 @@ module.exports = {
             ]
         }
     },
+    
     request_announcement: context => {
         return {
             type: 'modal',
